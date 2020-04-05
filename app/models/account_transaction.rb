@@ -15,7 +15,6 @@ class AccountTransaction < ApplicationRecord
   end
 
   def reset_account_balance
-    byebug
     trans_type = transaction_type_change&.first || transaction_type
     old_amount = amount_change&.first || amount
 
