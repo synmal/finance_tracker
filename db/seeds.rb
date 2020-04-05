@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create accounts
-3.times do
-  account_details = {
-    name: Faker::Bank.name,
-    balance: Faker::Number.decimal(l_digits: 3)
-  }
-  Account.create!(account_details)
-end
+# 3.times do
+#   account_details = {
+#     name: Faker::Bank.name,
+#     balance: Faker::Number.decimal(l_digits: 3)
+#   }
+#   Account.create!(account_details)
+# end
 
 # Create transactions
 Account.all.each do |acc|
-  3.times{acc.account_transactions.create!(amount: Faker::Number.within(range: 1..50), transaction_type: 0)}
+  10.times{ |i| acc.account_transactions.create!(amount: Faker::Number.within(range: 1..10), transaction_type: i.even? ? 0 : 1)}
 end
